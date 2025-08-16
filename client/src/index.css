@@ -129,3 +129,14 @@
 .font-inter {
   font-family: var(--font-sans);
 }
+
+/* Disclaimer Popup Override */
+.disclaimer-popup {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+}

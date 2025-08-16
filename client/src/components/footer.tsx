@@ -27,45 +27,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* ADTU fam shoutout */}
-          <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
-            <div className="text-center">
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 font-medium">
-                Shoutout to the ADTU fam:
-              </p>
-              <div className="flex flex-wrap justify-center items-center gap-3 text-sm">
-                <a
-                  href="https://www.instagram.com/adtu_confessout_/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-adtu-blue dark:hover:text-blue-400 transition-all duration-200 group font-medium px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <Instagram className="w-3 h-3 group-hover:scale-110 transition-transform duration-200" />
-                  <span>@adtu_confessout_</span>
-                </a>
-                <span className="text-gray-400 hidden sm:inline">|</span>
-                <a
-                  href="https://www.instagram.com/adtu_wallah_/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-adtu-blue dark:hover:text-blue-400 transition-all duration-200 group font-medium px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <Instagram className="w-3 h-3 group-hover:scale-110 transition-transform duration-200" />
-                  <span>@adtu_wallah_</span>
-                </a>
-                <span className="text-gray-400 hidden sm:inline">|</span>
-                <a
-                  href="https://www.instagram.com/adtuconfessout_2.0/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-adtu-blue dark:hover:text-blue-400 transition-all duration-200 group font-medium px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <Instagram className="w-3 h-3 group-hover:scale-110 transition-transform duration-200" />
-                  <span>@adtuconfessout_2.0</span>
-                </a>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </footer>

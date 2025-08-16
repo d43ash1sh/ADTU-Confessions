@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { DisclaimerBanner } from "@/components/disclaimer-banner";
+import { DisclaimerPopup } from "@/components/disclaimer-popup";
 import Home from "@/pages/home";
 import Submit from "@/pages/submit";
 import Admin from "@/pages/admin";
@@ -29,6 +30,7 @@ function App() {
       <ThemeProvider defaultTheme="system" storageKey="adtu-confessions-theme">
         <TooltipProvider>
           <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-inter transition-colors duration-300 flex flex-col">
+            <DisclaimerPopup />
             <DisclaimerBanner />
             <Navbar />
             <main className="flex-1">
