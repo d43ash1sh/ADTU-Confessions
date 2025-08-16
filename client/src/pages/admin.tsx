@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { LogOut, CheckCircle, Trash2 } from "lucide-react";
+import { LogOut, CheckCircle, Trash2, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { api, type ApiConfession } from "@/lib/api";
 
@@ -55,9 +55,15 @@ export default function Admin() {
     },
   });
 
-  const { data: pendingConfessions = [], isLoading, refetch } = useQuery({
+  const { data: pendingConfessions = [], isLoading: pendingLoading, refetch: refetchPending } = useQuery({
     queryKey: ['/api/admin/confessions'],
     queryFn: () => api.getPendingConfessions(adminToken),
+    enabled: isLoggedIn && !!adminToken,
+  });
+
+  const { data: approvedConfessions = [], isLoading: approvedLoading, refetch: refetchApproved } = useQuery({
+    queryKey: ['/api/confessions'],
+    queryFn: () => api.getConfessions(),
     enabled: isLoggedIn && !!adminToken,
   });
 
@@ -68,7 +74,8 @@ export default function Admin() {
         title: "Confession Approved",
         description: "The confession has been approved and published.",
       });
-      refetch();
+      refetchPending();
+      refetchApproved();
       queryClient.invalidateQueries({ queryKey: ['/api/confessions'] });
       queryClient.invalidateQueries({ queryKey: ['/api/confessions/stats'] });
     },
@@ -88,7 +95,8 @@ export default function Admin() {
         title: "Confession Deleted",
         description: "The confession has been deleted.",
       });
-      refetch();
+      refetchPending();
+      refetchApproved();
       queryClient.invalidateQueries({ queryKey: ['/api/confessions/stats'] });
     },
     onError: (error: any) => {
@@ -138,7 +146,7 @@ export default function Admin() {
 
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+      <div className="bg-gray-50 dark:bg-gray-900 py-8">
         <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Admin Access</h1>
@@ -208,7 +216,7 @@ export default function Admin() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+    <div className="bg-gray-50 dark:bg-gray-900 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
@@ -216,6 +224,7 @@ export default function Admin() {
             <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Admin Dashboard</h1>
             <div className="flex items-center space-x-6 text-sm text-gray-600 dark:text-gray-400">
               <span data-testid="text-pending-count">{pendingConfessions.length} Pending Confessions</span>
+              <span data-testid="text-approved-count">{approvedConfessions.length} Approved Confessions</span>
             </div>
           </div>
           
@@ -231,7 +240,7 @@ export default function Admin() {
         </div>
 
         {/* Pending Confessions */}
-        {isLoading ? (
+        {pendingLoading ? (
           <div className="space-y-6">
             {[1, 2, 3].map((i) => (
               <Card key={i}>
@@ -328,6 +337,101 @@ export default function Admin() {
             ))}
           </div>
         )}
+
+        {/* Approved Confessions */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Approved Confessions</h2>
+          
+          {approvedLoading ? (
+            <div className="space-y-6">
+              {[1, 2, 3].map((i) => (
+                <Card key={i}>
+                  <CardContent className="p-6">
+                    <div className="animate-pulse">
+                      <div className="flex justify-between items-center mb-4">
+                        <div className="flex space-x-3">
+                          <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-24"></div>
+                          <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-16"></div>
+                        </div>
+                        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-20"></div>
+                      </div>
+                      <div className="h-20 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                      <div className="flex justify-between items-center">
+                        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-32"></div>
+                        <div className="flex space-x-3">
+                          <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-20"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : approvedConfessions.length === 0 ? (
+            <Card>
+              <CardContent className="py-12">
+                <div className="text-center">
+                  <MessageSquare className="w-16 h-16 mx-auto text-gray-400 mb-4" />
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">No approved confessions</h3>
+                  <p className="text-gray-500 dark:text-gray-400">Approved confessions will appear here.</p>
+                </div>
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="space-y-6">
+              {approvedConfessions.map((confession: ApiConfession) => (
+                <Card key={confession.id} className="bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
+                  <CardContent className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center space-x-3">
+                        <Badge className="bg-green-200 dark:bg-green-800 text-green-800 dark:text-green-200">
+                          APPROVED
+                        </Badge>
+                        <Badge 
+                          className={categoryColors[confession.category] || categoryColors.other}
+                          data-testid={`badge-admin-category-${confession.category}`}
+                        >
+                          {confession.category.charAt(0).toUpperCase() + confession.category.slice(1)}
+                        </Badge>
+                        <Badge className="bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200">
+                          #{confession.displayId}
+                        </Badge>
+                      </div>
+                      <span className="text-sm text-gray-500 dark:text-gray-400" data-testid={`text-admin-date-${confession.id}`}>
+                        {formatDate(confession.createdAt)}
+                      </span>
+                    </div>
+                    
+                    <p className="text-gray-800 dark:text-gray-200 leading-relaxed mb-6" data-testid={`text-admin-confession-${confession.id}`}>
+                      {confession.text}
+                    </p>
+                    
+                    <Separator className="mb-4" />
+                    
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        <span>Confession ID: {confession.id.slice(0, 8)}...</span>
+                      </div>
+                      <div className="flex space-x-3">
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => deleteMutation.mutate(confession.id)}
+                          disabled={deleteMutation.isPending}
+                          className="flex items-center space-x-2"
+                          data-testid={`button-delete-approved-${confession.id}`}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                          <span>Delete</span>
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

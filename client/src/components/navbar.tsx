@@ -3,6 +3,7 @@ import { Moon, Sun, Menu } from "lucide-react";
 import { useTheme } from "./theme-provider";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ADTULogo } from "./adtu-logo";
 
 export function Navbar() {
   const [location] = useLocation();
@@ -44,12 +45,10 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}
           <Link href="/" className="flex items-center" data-testid="link-logo">
-            <div className="w-10 h-10 bg-adtu-blue rounded-lg flex items-center justify-center mr-3">
-              <span className="text-white font-bold text-lg">A</span>
-            </div>
+            <ADTULogo size="md" showText={false} className="mr-3" />
             <div>
-              <h1 className="text-xl font-bold text-adtu-blue dark:text-blue-400">ADTU Confessions</h1>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Anonymous University Confessions</p>
+              <h1 className="text-xl font-bold text-adtu-blue dark:text-blue-400">Assam Down Town University Confessions</h1>
+              <p className="text-xs text-gray-500 dark:text-gray-400">University Confessions</p>
             </div>
           </Link>
 
@@ -87,11 +86,9 @@ export function Navbar() {
               <SheetContent side="right" className="w-[300px]">
                 <div className="flex flex-col space-y-8 mt-8">
                   <div className="flex items-center">
-                    <div className="w-8 h-8 bg-adtu-blue rounded-lg flex items-center justify-center mr-2">
-                      <span className="text-white font-bold text-sm">A</span>
-                    </div>
+                    <ADTULogo size="sm" showText={false} className="mr-2" />
                     <div>
-                      <h2 className="font-bold text-adtu-blue dark:text-blue-400">ADTU Confessions</h2>
+                      <h2 className="font-bold text-adtu-blue dark:text-blue-400">Assam Down Town University Confessions</h2>
                     </div>
                   </div>
                   <NavLinks mobile />

@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { DisclaimerBanner } from "@/components/disclaimer-banner";
 import Home from "@/pages/home";
 import Submit from "@/pages/submit";
 import Admin from "@/pages/admin";
@@ -26,9 +28,13 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="system" storageKey="adtu-confessions-theme">
         <TooltipProvider>
-          <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-inter transition-colors duration-300">
+          <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-inter transition-colors duration-300 flex flex-col">
+            <DisclaimerBanner />
             <Navbar />
-            <Router />
+            <main className="flex-1">
+              <Router />
+            </main>
+            <Footer />
             <Toaster />
           </div>
         </TooltipProvider>
