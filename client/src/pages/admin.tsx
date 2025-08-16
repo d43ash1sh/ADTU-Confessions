@@ -204,7 +204,7 @@ export default function Admin() {
                     disabled={loginMutation.isPending}
                     data-testid="button-admin-login"
                   >
-                    {loginMutation.isPending ? "Logging in..." : "Login to Admin Panel"}
+                    {loginMutation.isPending ? "Logging in..." : "Login to cPanel"}
                   </Button>
                 </form>
               </Form>

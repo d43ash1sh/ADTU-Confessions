@@ -24,44 +24,40 @@ export function ADTULogo({ size = 'md', showText = true, className = '' }: ADTUL
       {/* ADTU Circular Logo */}
       <div className={`${sizeClasses[size]} relative flex-shrink-0`}>
         <svg viewBox="0 0 100 100" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          {/* Outer serrated circle */}
-          <circle cx="50" cy="50" r="48" fill="#4A5AA8" stroke="#4A5AA8" strokeWidth="1"/>
+          {/* Modern gradient background */}
+          <defs>
+            <linearGradient id="modernGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#3B82F6" />
+              <stop offset="50%" stopColor="#1D4ED8" />
+              <stop offset="100%" stopColor="#1E40AF" />
+            </linearGradient>
+            <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#F59E0B" />
+              <stop offset="100%" stopColor="#D97706" />
+            </linearGradient>
+          </defs>
           
-          {/* Serrated edge effect */}
-          <circle cx="50" cy="50" r="46" fill="none" stroke="#4A5AA8" strokeWidth="4" strokeDasharray="2,1"/>
+          {/* Main circle with modern gradient */}
+          <circle cx="50" cy="50" r="45" fill="url(#modernGradient)" />
           
-          {/* Main blue circle */}
-          <circle cx="50" cy="50" r="40" fill="#4A5AA8"/>
+          {/* Inner accent ring */}
+          <circle cx="50" cy="50" r="35" fill="none" stroke="white" strokeWidth="2" opacity="0.3" />
           
-          {/* Inner white circle */}
-          <circle cx="50" cy="50" r="32" fill="white"/>
-          
-          {/* ASSAM text (top left) */}
-          <text x="25" y="25" fill="#4A5AA8" fontSize="4" fontFamily="Arial, sans-serif" fontWeight="bold" transform="rotate(-45 25 25)">ASSAM</text>
-          
-          {/* down town text (top right) */}
-          <text x="75" y="25" fill="#4A5AA8" fontSize="3" fontFamily="Arial, sans-serif" transform="rotate(45 75 25)">down town</text>
-          
-          {/* UNIVERSITY text (bottom) */}
-          <text x="50" y="85" fill="#4A5AA8" fontSize="4" fontFamily="Arial, sans-serif" fontWeight="bold" textAnchor="middle">UNIVERSITY</text>
-          
-          {/* Central flame symbol */}
-          <g transform="translate(50, 45)">
-            <ellipse cx="0" cy="0" rx="8" ry="12" fill="#F4C430"/>
-            <ellipse cx="0" cy="2" rx="5" ry="8" fill="#FFD700"/>
-            <ellipse cx="0" cy="4" rx="3" ry="5" fill="#FFA500"/>
+          {/* Modern "A" lettermark */}
+          <g transform="translate(50, 50)">
+            {/* Letter A shape */}
+            <path d="M-12 15 L-6 -10 L0 -15 L6 -10 L12 15 L8 15 L6 8 L-6 8 L-8 15 Z M-4 2 L4 2 L0 -6 Z" 
+                  fill="white" />
+            
+            {/* Modern accent dot */}
+            <circle cx="0" cy="-18" r="3" fill="url(#accentGradient)" />
           </g>
           
-          {/* Estd. 2010 */}
-          <text x="50" y="68" textAnchor="middle" fill="#4A5AA8" fontSize="3" fontFamily="Arial, sans-serif">Estd. 2010</text>
-          
-          {/* Stars */}
-          <text x="30" y="60" fill="#4A5AA8" fontSize="3">★</text>
-          <text x="70" y="60" fill="#4A5AA8" fontSize="3">★</text>
-          
-          {/* Bottom ribbon */}
-          <rect x="20" y="75" width="60" height="8" fill="#4A5AA8" rx="4"/>
-          <text x="50" y="80" textAnchor="middle" fill="white" fontSize="2.5" fontFamily="Arial, sans-serif">Guwahati</text>
+          {/* Subtle geometric elements */}
+          <circle cx="25" cy="25" r="2" fill="white" opacity="0.4" />
+          <circle cx="75" cy="75" r="2" fill="white" opacity="0.4" />
+          <circle cx="75" cy="25" r="1.5" fill="white" opacity="0.3" />
+          <circle cx="25" cy="75" r="1.5" fill="white" opacity="0.3" />
         </svg>
       </div>
 
