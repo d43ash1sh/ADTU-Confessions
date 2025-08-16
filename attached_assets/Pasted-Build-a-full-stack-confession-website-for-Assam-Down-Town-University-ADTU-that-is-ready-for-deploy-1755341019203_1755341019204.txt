@@ -1,0 +1,100 @@
+Build a full-stack confession website for Assam Down Town University (ADTU) that is ready for deployment on Vercel.
+
+Requirements:
+
+Branding & UI
+
+Use the ADTU official logo (I will provide a PNG/SVG) as both navbar logo and favicon.
+
+Clean, modern card-based UI with rounded corners, shadows, and smooth hover effects.
+
+Use Tailwind CSS for styling.
+
+Mobile-first, responsive layout.
+
+Color theme: ADTU blue (#004C99), white (#ffffff), and grey (#f5f5f5).
+
+Pages
+
+Home (Feed): Shows a list of anonymous confessions. Each confession card must display:
+
+Confession ID (#001, #002…)
+
+Confession text
+
+Date posted
+
+Reaction buttons (❤️ 😂 🔥).
+
+Submit Page: Simple anonymous form (textarea + submit). No login or email required. Submissions go to database.
+
+Categories/Tags: Add dropdown to filter posts (Funny, Crush, Hostel, Sad, Roast, etc.).
+
+Search Bar: Search confessions by keywords.
+
+Admin Page (Private):
+
+Admin login (simple username/password stored in env variables).
+
+Show all pending confessions.
+
+Approve → publish to feed OR Delete.
+
+Backend & Database
+
+Use Next.js API routes (no separate server).
+
+Store confessions in MongoDB Atlas (cloud DB).
+
+Schema: { id, text, date, status (pending/approved), tags, reactions }.
+
+Only approved confessions show on feed.
+
+Deployment
+
+Make sure project is Vercel ready:
+
+Add next.config.js.
+
+Include .env.example for MongoDB URI + admin credentials.
+
+All API routes should work on Vercel serverless functions.
+
+Final structure should be:
+
+/pages
+  /api
+    submit.js
+    getConfessions.js
+    approve.js
+/components
+  ConfessionCard.js
+  Navbar.js
+/public
+  adtu-logo.png
+  favicon.ico
+tailwind.config.js
+next.config.js
+package.json
+.env.example
+
+
+Extra Features (Optional but Nice)
+
+Dark mode toggle.
+
+Analytics counter (total confessions, total reactions).
+
+Goal
+
+Provide me with clean, production-ready Next.js + Tailwind + MongoDB code that I can:
+
+Save the project from Replit.
+
+Push to GitHub.
+
+Connect repo to Vercel.
+
+Add my .env (MongoDB URI + admin password).
+
+Deploy instantly."*
