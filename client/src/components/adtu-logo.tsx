@@ -24,40 +24,55 @@ export function ADTULogo({ size = 'md', showText = true, className = '' }: ADTUL
       {/* ADTU Circular Logo */}
       <div className={`${sizeClasses[size]} relative flex-shrink-0`}>
         <svg viewBox="0 0 100 100" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          {/* Modern gradient background */}
-          <defs>
-            <linearGradient id="modernGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#3B82F6" />
-              <stop offset="50%" stopColor="#1D4ED8" />
-              <stop offset="100%" stopColor="#1E40AF" />
-            </linearGradient>
-            <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F59E0B" />
-              <stop offset="100%" stopColor="#D97706" />
-            </linearGradient>
-          </defs>
+          {/* Official ADTU Logo Recreation */}
           
-          {/* Main circle with modern gradient */}
-          <circle cx="50" cy="50" r="45" fill="url(#modernGradient)" />
+          {/* Outer blue circle */}
+          <circle cx="50" cy="50" r="48" fill="#1e3a8a" stroke="#1e3a8a" strokeWidth="2"/>
           
-          {/* Inner accent ring */}
-          <circle cx="50" cy="50" r="35" fill="none" stroke="white" strokeWidth="2" opacity="0.3" />
+          {/* Inner white circle */}
+          <circle cx="50" cy="50" r="38" fill="white"/>
           
-          {/* Modern "A" lettermark */}
-          <g transform="translate(50, 50)">
-            {/* Letter A shape */}
-            <path d="M-12 15 L-6 -10 L0 -15 L6 -10 L12 15 L8 15 L6 8 L-6 8 L-8 15 Z M-4 2 L4 2 L0 -6 Z" 
-                  fill="white" />
+          {/* Central emblem - Book/Flame symbol */}
+          <g transform="translate(50, 40)">
+            {/* Open book base */}
+            <path d="M-15 5 Q-15 0 -10 0 L10 0 Q15 0 15 5 L15 15 Q15 20 10 20 L-10 20 Q-15 20 -15 15 Z" 
+                  fill="#1e3a8a" />
             
-            {/* Modern accent dot */}
-            <circle cx="0" cy="-18" r="3" fill="url(#accentGradient)" />
+            {/* Book pages */}
+            <rect x="-12" y="3" width="24" height="2" fill="white" opacity="0.8" />
+            <rect x="-12" y="7" width="24" height="2" fill="white" opacity="0.8" />
+            <rect x="-12" y="11" width="24" height="2" fill="white" opacity="0.8" />
+            
+            {/* Flame/Torch above book */}
+            <ellipse cx="0" cy="-8" rx="6" ry="10" fill="#f59e0b" />
+            <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#fbbf24" />
+            <ellipse cx="0" cy="-4" rx="2" ry="4" fill="#fcd34d" />
           </g>
           
-          {/* Subtle geometric elements */}
-          <circle cx="25" cy="25" r="2" fill="white" opacity="0.4" />
-          <circle cx="75" cy="75" r="2" fill="white" opacity="0.4" />
-          <circle cx="75" cy="25" r="1.5" fill="white" opacity="0.3" />
-          <circle cx="25" cy="75" r="1.5" fill="white" opacity="0.3" />
+          {/* University text curved at top */}
+          <path id="topCurve" d="M 15 30 A 35 35 0 0 1 85 30" fill="none" />
+          <text fontSize="6" fill="#1e3a8a" fontFamily="Arial, sans-serif" fontWeight="bold">
+            <textPath href="#topCurve" startOffset="50%" textAnchor="middle">
+              ASSAM DOWN TOWN
+            </textPath>
+          </text>
+          
+          {/* University text curved at bottom */}
+          <path id="bottomCurve" d="M 15 70 A 35 35 0 0 0 85 70" fill="none" />
+          <text fontSize="6" fill="#1e3a8a" fontFamily="Arial, sans-serif" fontWeight="bold">
+            <textPath href="#bottomCurve" startOffset="50%" textAnchor="middle">
+              UNIVERSITY
+            </textPath>
+          </text>
+          
+          {/* Established year */}
+          <text x="50" y="85" textAnchor="middle" fill="#1e3a8a" fontSize="4" fontFamily="Arial, sans-serif">
+            EST. 2010
+          </text>
+          
+          {/* Decorative elements */}
+          <circle cx="20" cy="50" r="1.5" fill="#f59e0b" />
+          <circle cx="80" cy="50" r="1.5" fill="#f59e0b" />
         </svg>
       </div>
 

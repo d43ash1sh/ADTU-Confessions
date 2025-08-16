@@ -9,6 +9,8 @@ import { Footer } from "@/components/footer";
 import { DisclaimerBanner } from "@/components/disclaimer-banner";
 import { DisclaimerPopup } from "@/components/disclaimer-popup";
 import Home from "@/pages/home";
+import Battles from "@/pages/battles";
+import GradeCalculator from "@/pages/calculator";
 import Submit from "@/pages/submit";
 import Admin from "@/pages/admin";
 import NotFound from "@/pages/not-found";
@@ -17,6 +19,8 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/battles" component={Battles} />
+      <Route path="/calculator" component={GradeCalculator} />
       <Route path="/submit" component={Submit} />
       <Route path="/admin" component={Admin} />
       <Route component={NotFound} />

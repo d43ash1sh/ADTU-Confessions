@@ -11,6 +11,8 @@ export function Navbar() {
 
   const navigation = [
     { name: "Feed", href: "/" },
+    { name: "Battles", href: "/battles" },
+    { name: "Calculator", href: "/calculator" },
     { name: "Submit", href: "/submit" },
     { name: "Admin", href: "/admin" },
   ];
@@ -47,8 +49,8 @@ export function Navbar() {
           <Link href="/" className="flex items-center" data-testid="link-logo">
             <ADTULogo size="md" showText={false} className="mr-3" />
             <div>
-              <h1 className="text-xl font-bold text-adtu-blue dark:text-blue-400">Assam Down Town University Confessions</h1>
-              <p className="text-xs text-gray-500 dark:text-gray-400">University Confessions</p>
+              <h1 className="text-xl font-bold text-adtu-blue dark:text-blue-400">ADTU Confessions</h1>
+              <p className="text-xs text-gray-500 dark:text-gray-400">Anonymous Student Stories</p>
             </div>
           </Link>
 
@@ -88,7 +90,7 @@ export function Navbar() {
                   <div className="flex items-center">
                     <ADTULogo size="sm" showText={false} className="mr-2" />
                     <div>
-                      <h2 className="font-bold text-adtu-blue dark:text-blue-400">Assam Down Town University Confessions</h2>
+                      <h2 className="font-bold text-adtu-blue dark:text-blue-400">ADTU Confessions</h2>
                     </div>
                   </div>
                   <NavLinks mobile />
